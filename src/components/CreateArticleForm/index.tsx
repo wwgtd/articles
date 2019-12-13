@@ -20,19 +20,18 @@ interface ICreateArticleFromState {
 class CreateArticleForm extends React.PureComponent<ICreateArticleFromProps, ICreateArticleFromState> {
   constructor(props: ICreateArticleFromProps) {
     super(props);
-    this.state = {body: "", title: "", category_id: 0, ok: false}
+    this.state = {body: "", title: "", category_id: -1, ok: false}
   }
 
   componentDidMount() {
     this.setState({...this.state, category_id: parseInt(Object.keys(this.props.categories.data)[0])});
   }
 
-  componentDidUpdate() {
-    this.setState({...this.state, category_id: parseInt(Object.keys(this.props.categories.data)[0])});
+
+
+  handleInput = (e: any) => {
+    this.setState({...this.state, [e.target.name]: e.target.value});
   }
-
-
-  handleInput = (e: any) => this.setState({...this.state, [e.target.name]: e.target.value})
 
   handleSubmit = (e: any) => {
     e.preventDefault();
@@ -47,7 +46,7 @@ class CreateArticleForm extends React.PureComponent<ICreateArticleFromProps, ICr
         <form className='create_article_form' onSubmit={this.handleSubmit}>
           <div className="create_article_form_select">
             <label htmlFor='category'> Select category </label>
-            <select value={this.state.category_id} name="id" onChange={this.handleInput}>
+            <select value={this.state.category_id} name="category_id" onChange={this.handleInput}>
               {
               Object.keys(this.props.categories.data).map(cur => {
                 console.log(cur);

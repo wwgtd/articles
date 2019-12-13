@@ -22,7 +22,7 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
       <div className='headerLogin'>
       { props.users.user_data ?
         <div>
-          <div className="login_info">Your account: <span style={ {color: "#D51C5C"} }> {props.users.user_data.name}</span></div>
+          <div className="login_info">Your account: <span> {props.users.user_data.name}</span></div>
           <button className='header_logout' onClick={ () => props.logout(props.users.auth_data!) }> Logout </button>
         </div>
         :

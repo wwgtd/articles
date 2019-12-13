@@ -35,17 +35,15 @@ class EditCategoriesForm extends React.PureComponent<IEditCategoriesFormProps, I
     this.setState({...this.state, id: parseInt(Object.keys(this.props.categories.data)[0])});
   }
 
-  componentDidUpdate() {
-    this.setState({...this.state, id: parseInt(Object.keys(this.props.categories.data)[0])});
+  handleInput = (e: any) => {
+    this.setState({...this.state, [e.target.name]: e.target.value});
   }
-
-  handleInput = (e: any) => {this.setState({...this.state, [e.target.name]: e.target.value}); }
 
   handleSubmit = (e: any) => {
     e.preventDefault();
     this.state.display === DisplayStatus.CreateNewCategory ? this.props.create(this.state.name) :
       this.props.update({newName: this.state.name, id: this.state.id});
-    this.setState({...this.state, ok: true});
+    this.setState({...this.state, name: "", ok: true});
     setTimeout(() => this.setState({...this.state, ok: false}), 1000)
   }
 
@@ -54,7 +52,6 @@ class EditCategoriesForm extends React.PureComponent<IEditCategoriesFormProps, I
   }
 
   render() {
-    console.log(this.props);
     if (this.state.display === DisplayStatus.CreateNewCategory) {
       return (
         <div className="edit_categories_frame">
@@ -83,7 +80,6 @@ class EditCategoriesForm extends React.PureComponent<IEditCategoriesFormProps, I
             <select value={this.state.id} name="id" onChange={this.handleInput}>
               {
                 Object.keys(this.props.categories.data).map(cur => {
-                  console.log(cur);
                   return <option key={cur} value={cur}> {this.props.categories.data[cur].name}</option>
                 })
               }
