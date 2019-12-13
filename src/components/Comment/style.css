@@ -1,0 +1,45 @@
+.article_comment_author {
+  padding: 10px 5px;
+  border-bottom: 1px solid white;
+}
+
+.article_comment_body {
+  border-left: 1px solid white;
+}
+.article_comment_body_created_at {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+}
+.article_comment_body_message {
+  padding: 8px;
+  background-color: #E4EBEC;
+  min-height: 30px;
+}
+
+.comment_idx {
+  padding: 3px 4px;
+  margin-right: 5px;
+}
+
+.comment_date {
+  float:right;
+}
+
+.edit_comment_btn {
+  float: right;
+  padding: 4px 6px;
+
+  border: 0.5px solid;
+  border-radius: 5%;
+
+  text-decoration: none;
+  background: #a3bffa;
+  color: black;
+}
+
+.update_article_form {
+  border-bottom: 0.5px solid white;
+  background-color: #E4EBEC;
+}

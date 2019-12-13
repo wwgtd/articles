@@ -1,0 +1,37 @@
+.loginForm {
+  border: 1px solid black;
+  border-radius: 5%;
+  width: 150px;
+  margin: 10% auto 0 auto;
+  padding: 5px;
+}
+
+.loginForm > div {
+  display: block;
+  padding: 2%
+}
+
+.loginForm > div > input {
+  width: 96%;
+}
+
+.loginForm > input {
+  color: black;
+  background: #a3bffa;
+
+  display:block;
+  width: 35%;
+  padding: 3px;
+  margin: 3px auto 0 auto;
+}
+
+
+.loginError {
+  color: red;
+  text-align: center;
+}
+
+.success {
+  color: green;
+  text-align: center;
+}

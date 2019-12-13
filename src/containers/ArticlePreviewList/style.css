@@ -1,0 +1,34 @@
+.articleListLoading {
+  margin: 10% auto 0 auto;
+  text-align: center;
+}
+
+
+.articlePreviewList {
+  width: 82%;
+  margin: 7% 9% 0 9%;
+}
+
+.articlePreviewHeader:first-child{
+  border-top: 1px solid black;
+  border-radius: 1%;
+}
+
+.articlePreviewHeader {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  text-decoration: none;
+  color: black;
+  background: #a3bffa;
+}
+
+.articlePreviewTitleHeader {
+  padding: 10px 5px;
+}
+
+.articlePreviewCategoryHeader, .articlePreviewCreated_atHeader, .articlePreviewUpdated_atHeader {
+  padding: 10px 5px;
+  border-left: 1px solid white;
+}

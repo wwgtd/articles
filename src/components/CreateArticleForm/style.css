@@ -1,0 +1,45 @@
+.create_article_frame {
+  position:fixed;
+  width: 40%;
+  min-height: 40%;
+
+  top: 10%;
+  left: 30%;
+
+  background-color: #f5f5f5;
+  border: 1px solid;
+}
+
+.create_article_form_submit_btn {
+  text-align: center;
+  padding: 3px;
+  margin: 3px;
+
+  text-decoration: none;
+  background: #a3bffa;
+  color: black;
+}
+
+.create_article_form {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.create_article_form_select, .create_article_form_title, .create_article_form_body {
+  margin: 1% 0;
+}
+
+
+.create_article_form_body > label, .create_article_form_title > label {
+  display: block;
+}
+
+.create_article_form_body > textarea {
+  width: 50%;
+}
+
+.title_input {
+  width: 50%;
+}

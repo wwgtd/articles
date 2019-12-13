@@ -1,0 +1,42 @@
+.articlePreview:first-child{
+  border-top: 1px solid black;
+  border-radius: 1%;
+}
+.articlePreview {
+  display: grid;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+  text-decoration: none;
+  color: black;
+
+  background: #c3dafe;
+}
+
+.article_preview_ceil {
+  display: grid;
+  border-left: 1px solid white;
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+.article_preview_title {
+  margin: auto 0;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.articlePreviewCategory, .articlePreviewCreated_at, .articlePreviewUpdated_at {
+  margin: auto;
+  text-align: center;
+}
+
+.delete_article_btn {
+  border: 0.5px solid;
+  border-radius: 5%;
+  float: right;
+  color: black;
+  background: #a3bffa;
+}

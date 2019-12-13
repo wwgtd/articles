@@ -1,0 +1,21 @@
+.article_preview_btns {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 1% 9% 0 9%;
+  justify-content: space-between;
+}
+
+.create_article_btn, .edit_categories_btn {
+  display: inline-block;
+  text-align: center;
+  padding: 6px;
+  margin: auto 0 auto 0;
+
+  border: 0.5px solid;
+  border-radius: 5%;
+
+  text-decoration: none;
+  background: #a3bffa;
+  color: black;
+}

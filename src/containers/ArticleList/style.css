@@ -1,0 +1,44 @@
+.articleListLoading {
+  margin: 10% auto 0 auto;
+  text-align: center;
+}
+
+
+.articlePreviewList {
+  width: 94%;
+  margin: 7% 3% 0 3%;
+}
+
+.articlePreviewHeader:first-child{
+  border-top: 1px solid black;
+  border-radius: 1%;
+}
+
+.articlePreviewHeader {
+  display: grid;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+  text-decoration: none;
+  color: black;
+
+  background: #a3bffa;
+}
+
+.articlePreviewTitleHeader {
+  margin: auto 0;
+  padding: 0 5px;
+}
+
+.article_preview_header_ceil {
+  display: grid;
+  border-left: 1px solid white;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.article_preview_header_title {
+  margin: auto;
+  text-align: center;
+}
