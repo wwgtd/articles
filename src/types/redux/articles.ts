@@ -1,4 +1,5 @@
 import { IComment } from './comments'
+import { IUser } from './users'
 
 export const CREATE_ARTICLE = 'CREATE_ARTICLE'
 export const SAVE_ARTICLES = 'SAVE_ARTICLES';
@@ -28,6 +29,8 @@ export interface IArticle {
   category_id: number,
   body: string,
   title: string,
+  user_id: number,
+  user?: IUser,
   icon_id?: string,
   comments?: Array<IComment>
 }

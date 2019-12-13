@@ -37,3 +37,15 @@ header {
   padding: 7px;
   margin-left: 5px;
 }
+
+.login_info {
+  display: inline-block;
+  padding: 5px;
+  margin-right: 3px;
+
+  border: 0.5px solid;
+  border-radius: 5%;
+  text-decoration: none;
+  background: #a3bffa;
+  color: black;
+}

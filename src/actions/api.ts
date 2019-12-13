@@ -81,7 +81,16 @@ const mock_api: API = {
     getOne: (id: number) => new Promise<IArticle>((res, rej) => {
       if (mock_db.articles[id] === undefined) rej(new Error("incorrect article id"));
       const target: IArticle = {...mock_db.articles[id]};
+
+      for (let prop in mock_db.users) {
+        if (mock_db.users[prop].id === target.user_id) {
+          target.user = mock_db.users[prop];
+          break;
+        }
+      }
+
       target.comments = [];
+
       for (let prop in mock_db.comments) {
         if (mock_db.comments[prop].article_id === id) {
           let user_id = mock_db.comments[prop].user_id;

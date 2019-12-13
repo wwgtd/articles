@@ -85,13 +85,13 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
             <div className='article_messages'>
 
               <div className='article_starter_message'>
-                <div className='article_starter_message_author'> Article Starter</div>
+                <div className='article_starter_message_author'> {article.user!.name}</div>
                 <div className='article_starter_message_body'>
                   <div className='article_starter_message_body_created_at'>
-                    <span style={{float: 'right'}}> {article.created_at} </span>
+                    <span style={{float: 'right'}}> {article!.created_at} </span>
                     { isLoggedAdmin ? <button className="starter_post_btn_edit" onClick={() => this.changeDisplay()}>Edit article</button> : null }
                   </div>
-                  {this.state.display === ArticleDisplayStatus.Default ? <div className='article_starter_message_body_message'> {article.body} </div> :
+                  {this.state.display === ArticleDisplayStatus.Default ? <div className='article_starter_message_body_message'> {article!.body} </div> :
                     <form className='update_article_form' onSubmit={this.submitArticleUpdate}>
                       <div className='update_article_form_body'>
                         <textarea name='articleBody' value={this.state.articleBody} onChange={this.handleInput} />
