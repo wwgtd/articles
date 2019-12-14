@@ -1,4 +1,4 @@
-.articlePreview:first-child{
+.articlePreview:first-child {
   border-top: 1px solid black;
   border-radius: 1%;
 }
@@ -28,7 +28,9 @@
   cursor: pointer;
 }
 
-.articlePreviewCategory, .articlePreviewCreated_at, .articlePreviewUpdated_at {
+.articlePreviewCategory,
+.articlePreviewCreated_at,
+.articlePreviewUpdated_at {
   margin: auto;
   text-align: center;
 }

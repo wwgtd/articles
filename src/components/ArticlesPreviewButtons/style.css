@@ -6,7 +6,8 @@
   justify-content: space-between;
 }
 
-.create_article_btn, .edit_categories_btn {
+.create_article_btn,
+.edit_categories_btn {
   display: inline-block;
   text-align: center;
   padding: 6px;

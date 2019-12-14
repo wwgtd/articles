@@ -14,7 +14,7 @@
 }
 .article_comment_body_message {
   padding: 8px;
-  background-color: #E4EBEC;
+  background-color: #e4ebec;
   min-height: 30px;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .comment_date {
-  float:right;
+  float: right;
 }
 
 .edit_comment_btn {
@@ -41,5 +41,5 @@
 
 .update_article_form {
   border-bottom: 0.5px solid white;
-  background-color: #E4EBEC;
+  background-color: #e4ebec;
 }

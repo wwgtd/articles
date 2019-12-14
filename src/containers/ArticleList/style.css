@@ -3,13 +3,12 @@
   text-align: center;
 }
 
-
 .articlePreviewList {
   width: 94%;
   margin: 7% 3% 0 3%;
 }
 
-.articlePreviewHeader:first-child{
+.articlePreviewHeader:first-child {
   border-top: 1px solid black;
   border-radius: 1%;
 }

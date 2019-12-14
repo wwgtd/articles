@@ -1,5 +1,5 @@
 .create_article_frame {
-  position:fixed;
+  position: fixed;
   width: 40%;
   min-height: 40%;
 
@@ -27,12 +27,14 @@
   margin-top: 10%;
 }
 
-.create_article_form_select, .create_article_form_title, .create_article_form_body {
+.create_article_form_select,
+.create_article_form_title,
+.create_article_form_body {
   margin: 1% 0;
 }
 
-
-.create_article_form_body > label, .create_article_form_title > label {
+.create_article_form_body > label,
+.create_article_form_title > label {
   display: block;
 }
 

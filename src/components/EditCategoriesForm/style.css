@@ -1,5 +1,5 @@
 .edit_categories_frame {
-  position:fixed;
+  position: fixed;
   width: 50%;
   min-height: 30%;
 
@@ -29,9 +29,8 @@
   background: #a3bffa;
   color: black;
 }
-new_category_name_input
-.ok {
-  color: green
+new_category_name_input .ok {
+  color: green;
 }
 
 .edit_categories_form {

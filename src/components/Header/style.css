@@ -19,7 +19,11 @@ header {
   justify-content: flex-end;
 }
 
-.loginSignup, .loginLogin, .linkArticles, .header_logout, .clear_mock_data_btn {
+.loginSignup,
+.loginLogin,
+.linkArticles,
+.header_logout,
+.clear_mock_data_btn {
   display: inline-block;
   text-align: center;
   padding: 6px;
