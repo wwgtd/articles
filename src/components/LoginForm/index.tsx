@@ -44,7 +44,7 @@ class LoginForm extends React.PureComponent<ILoginProps, ILoginState> {
     } else {
       return (
         <>
-          <form className="loginForm" onSubmit={this.handleSubmit}>
+          <form className="login_form" onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="email"> Email: </label>
               <input
@@ -65,7 +65,7 @@ class LoginForm extends React.PureComponent<ILoginProps, ILoginState> {
             </div>
             <input type="submit" value="Login" />
             {this.props.users.errors ? (
-              <p className="loginError"> {this.props.users.errors} </p>
+              <p className="login_error"> {this.props.users.errors} </p>
             ) : (
               undefined
             )}

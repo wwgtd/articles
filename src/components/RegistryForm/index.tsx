@@ -70,7 +70,7 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
 
   render() {
     return (
-      <form className="loginForm" onSubmit={this.handleSubmit}>
+      <form className="register_form" onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor="email"> Email: </label>
           <input
@@ -98,13 +98,13 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
             onChange={this.handleInput}
           />
         </div>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Register" />
         {this.props.users.errors ? (
-          <p className="loginError"> {this.props.users.errors} </p>
+          <p className="login_error"> {this.props.users.errors} </p>
         ) : (
           undefined
         )}
-        <p className="success"> {this.state.successText} </p>
+        <p className="success_login"> {this.state.successText} </p>
       </form>
     );
   }

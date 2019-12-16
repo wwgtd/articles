@@ -1,4 +1,4 @@
-.loginForm {
+.register_form {
   border: 1px solid black;
   border-radius: 5%;
   width: 150px;
@@ -6,31 +6,33 @@
   padding: 5px;
 }
 
-.loginForm > div {
+.register_form > div {
   display: block;
   padding: 2%;
 }
 
-.loginForm > div > input {
+.register_form > div > input {
   width: 96%;
 }
 
-.loginForm > input {
+.register_form > input {
   color: black;
   background: #a3bffa;
 
+  border-radius: 10%;
+  border: 1px solid white;
   display: block;
-  width: 35%;
+  width: 40%;
   padding: 3px;
   margin: 3px auto 0 auto;
 }
 
-.loginError {
+.login_error {
   color: red;
   text-align: center;
 }
 
-.success {
+.success_login {
   color: green;
   text-align: center;
 }
