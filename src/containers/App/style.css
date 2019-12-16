@@ -1,3 +1,9 @@
 .app {
-  font-size: 0.9em;
+  width: 100%;
+  height: 100%;
+}
+
+button:hover {
+  background-color: #66b3ff;
+  transition: all .25s ease;
 }

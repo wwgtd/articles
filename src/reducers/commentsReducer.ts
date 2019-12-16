@@ -1,5 +1,8 @@
-import { LOADING_COMMENT_ON,
-  LOADING_COMMENT_OFF, ICommentsState } from '../types/redux/comments'
+import {
+  LOADING_COMMENT_ON,
+  LOADING_COMMENT_OFF,
+  ICommentsState
+} from "../types/redux/comments";
 
 /*const createReducer => {
 
@@ -7,26 +10,29 @@ import { LOADING_COMMENT_ON,
 
 const initialState: ICommentsState = {
   loadingStatus: false
-}
+};
 
-export default function commentsReducer(state = initialState, action: {type: string, payload: any}): ICommentsState {
+export default function commentsReducer(
+  state = initialState,
+  action: { type: string; payload: any }
+): ICommentsState {
   switch (action.type) {
     case LOADING_COMMENT_ON: {
       return {
         loadingStatus: true
-      }
+      };
     }
 
     case LOADING_COMMENT_OFF: {
       return {
         loadingStatus: false
-      }
+      };
     }
 
     default: {
       return {
         loadingStatus: state.loadingStatus
-      }
+      };
     }
   }
 }

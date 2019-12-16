@@ -1,13 +1,18 @@
 .create_article_frame {
   position: fixed;
-  width: 40%;
-  min-height: 40%;
+  width: 50%;
+  height: 55%;
+  min-height: 350px;
 
   top: 10%;
-  left: 30%;
+  left: 25%;
 
   background-color: #f5f5f5;
   border: 1px solid;
+}
+
+.create_article_form_btn {
+  height: 10%;
 }
 
 .create_article_form_submit_btn {
@@ -22,9 +27,9 @@
 
 .create_article_form {
   position: relative;
+  height: 90%;
   width: 100%;
   text-align: center;
-  margin-top: 10%;
 }
 
 .create_article_form_select,
@@ -38,10 +43,9 @@
   display: block;
 }
 
-.create_article_form_body > textarea {
-  width: 50%;
-}
-
-.title_input {
-  width: 50%;
+.create_article_form_body > textarea, .create_article_form_select > select, .title_input {
+  display: block;
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 80%;
 }

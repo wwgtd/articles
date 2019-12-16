@@ -6,14 +6,13 @@ header {
 }
 
 .headerInformation {
-  flex-basis: 80%;
+  flex-basis: 20%;
   padding-top: 8px;
 }
 
 .headerLogin {
   display: flex;
-  flex-basis: 20%;
-  height: 50%;
+  flex-basis: 80%;
   padding-top: 8px;
 
   justify-content: flex-end;
@@ -23,33 +22,27 @@ header {
 .loginLogin,
 .linkArticles,
 .header_logout,
-.clear_mock_data_btn {
-  display: inline-block;
-  text-align: center;
-  padding: 6px;
-  margin: auto 0 auto 0;
-
-  border: 0.5px solid;
-  border-radius: 5%;
-
-  text-decoration: none;
-  background: #a3bffa;
-  color: black;
-}
-
-.clear_mock_data_btn {
-  padding: 7px;
-  margin-left: 5px;
-}
-
+.clear_mock_data_btn,
 .login_info {
   display: inline-block;
-  padding: 5px;
-  margin-right: 3px;
+  box-sizing: border-box;
+
+  text-align: center;
+  padding: 8px;
+  margin: auto 6px auto 0;
 
   border: 0.5px solid;
   border-radius: 5%;
+
   text-decoration: none;
   background: #a3bffa;
   color: black;
+}
+
+.loginSignup {
+  margin-right: 0;
+}
+
+.clear_mock_data_btn {
+  background-color: #809fff;
 }

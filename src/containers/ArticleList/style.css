@@ -1,23 +1,24 @@
-.articleListLoading {
-  margin: 10% auto 0 auto;
+.article_list_locked {
   text-align: center;
+  margin-top: 10%;
 }
 
-.articlePreviewList {
+.article_preview_list {
   width: 94%;
   margin: 7% 3% 0 3%;
 }
 
-.articlePreviewHeader:first-child {
+.article_preview_header:first-child {
   border-top: 1px solid black;
   border-radius: 1%;
 }
 
-.articlePreviewHeader {
+.article_preview_header {
   display: grid;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+
 
   text-decoration: none;
   color: black;
@@ -25,19 +26,18 @@
   background: #a3bffa;
 }
 
-.articlePreviewTitleHeader {
+.article_preview_title_header {
   margin: auto 0;
-  padding: 0 5px;
+  padding: 0 8px;
+}
+
+.article_preview_title_header > span {
+  font-weight: bold;
 }
 
 .article_preview_header_ceil {
   display: grid;
   border-left: 1px solid white;
-  padding: 5px;
+  padding: 8px;
   font-weight: bold;
-}
-
-.article_preview_header_title {
-  margin: auto;
-  text-align: center;
 }

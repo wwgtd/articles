@@ -1,8 +1,8 @@
 .edit_categories_frame {
   position: fixed;
   width: 50%;
-  min-height: 30%;
-
+  height: 30%;
+  min-height: 200px;
   top: 10%;
   left: 25%;
 
@@ -23,13 +23,13 @@
 
 .change_edit_categories_display_btn {
   text-align: center;
-  height: 15%;
 
   text-decoration: none;
   background: #a3bffa;
   color: black;
 }
-new_category_name_input .ok {
+
+.new_category_name_input .ok {
   color: green;
 }
 
@@ -37,8 +37,7 @@ new_category_name_input .ok {
   position: relative;
 
   box-sizing: border-box;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 2%;
   width: 100%;
   height: 84%;
   text-align: center;
@@ -51,4 +50,13 @@ form > select {
 
 .submit_btn {
   margin-top: 3%;
+}
+
+.edit_categories_btns {
+  height: 20%;
+}
+
+.edit_categories_form_error {
+  height: 60%;
+  text-align: center;
 }

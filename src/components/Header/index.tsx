@@ -14,40 +14,52 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
   return (
     <header>
       <div className="headerInformation">
-        <Link className="linkArticles" to="/articles">
-          Articles
+        <Link to="/articles">
+          <button className="linkArticles" type="button"> Articles </button>
         </Link>
-        <button
-          className="clear_mock_data_btn"
-          onClick={() => {
-            clearMockData();
-          }}
-        >
-          Clear mock data
-        </button>
       </div>
       <div className="headerLogin">
         {props.users.user_data ? (
-          <div>
-            <div className="login_info">
-              Your account: <span> {props.users.user_data.name}</span>
-            </div>
+          <>
+            <button
+              className="clear_mock_data_btn"
+              onClick={() => {
+                clearMockData();
+              }}
+            >
+              Clear data
+            </button>
+            <button type="button" className="login_info">
+              Your account: {props.users.user_data.name}
+            </button>
             <button
               className="header_logout"
               onClick={() => props.logout(props.users.auth_data!)}
             >
               Logout
             </button>
-          </div>
+          </>
         ) : (
-          <div>
-            <Link to="/login" className="loginLogin">
-              Login
+          <>
+            <button
+              className="clear_mock_data_btn"
+              onClick={() => {
+                clearMockData();
+              }}
+            >
+              Clear data
+            </button>
+            <Link to="/login">
+              <button className="loginLogin" type="button">
+                Login
+              </button>
             </Link>
-            <Link to="/registry" className="loginSignup">
-              SignUp
+            <Link to="/registry">
+              <button className="loginSignup" type="button">
+                SignUp
+              </button>
             </Link>
-          </div>
+          </>
         )}
       </div>
     </header>

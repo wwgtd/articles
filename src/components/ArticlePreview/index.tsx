@@ -21,11 +21,11 @@ const ArticlePreview = React.memo((props: IArticlePreviewProps) => {
     isLogged = props.users.user_data.access_level === "10" ? true : false;
   }
   return (
-    <div className="articlePreview">
+    <Link to={`/article/${props.id}`} className="article_preview">
       <div className="article_preview_title">
-        <Link to={`/article/${props.id}`} className="articlePreviewTitle">
+        <span className="articlePreviewTitle">
           {props.title || "title"}
-        </Link>
+        </span>
         {isLogged ? (
           <button
             type="button"
@@ -42,10 +42,7 @@ const ArticlePreview = React.memo((props: IArticlePreviewProps) => {
       <div className="article_preview_ceil">
         <div className="articlePreviewCreated_at">{props.created_at}</div>
       </div>
-      <div className="article_preview_ceil">
-        <div className="articlePreviewUpdated_at">{props.updated_at}</div>
-      </div>
-    </div>
+    </Link>
   );
 });
 

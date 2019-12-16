@@ -50,55 +50,60 @@ class CreateArticleForm extends React.PureComponent<
   render() {
     return (
       <div className="create_article_frame">
-        <button className="frame_close_btn" onClick={this.props.onClick}>
+
+        <div className="create_article_form_btn">
+          <button className="frame_close_btn" onClick={this.props.onClick}>
           x
         </button>
-        <form className="create_article_form" onSubmit={this.handleSubmit}>
-          <div className="create_article_form_select">
-            <label htmlFor="category"> Select category </label>
-            <select
-              value={this.state.category_id}
-              name="category_id"
-              onChange={this.handleInput}
-            >
-              {Object.keys(this.props.categories.data).map(cur => {
-                console.log(cur);
-                return (
-                  <option key={cur} value={cur}>
-                    {" "}
-                    {this.props.categories.data[cur].name}
-                  </option>
-                );
-              })}
-            </select>
-            <div className="create_article_form_title">
-              <label htmlFor="title"> Title </label>
-              <input
-                className="title_input"
-                type="text"
-                name="title"
-                value={this.state.title}
+        </div>
+
+        <div className="create_article_form">
+          <form onSubmit={this.handleSubmit}>
+            <div className="create_article_form_select">
+              <label htmlFor="category"> Select category </label>
+              <select
+                value={this.state.category_id}
+                name="category_id"
+                onChange={this.handleInput}
+              >
+                {Object.keys(this.props.categories.data).map(cur => {
+                  return (
+                    <option key={cur} value={cur}>
+
+                      {this.props.categories.data[cur].name}
+                    </option>
+                  );
+                })}
+              </select>
+              <div className="create_article_form_title">
+                <label htmlFor="title"> Title </label>
+                <input
+                  className="title_input"
+                  type="text"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handleInput}
+                />
+              </div>
+            </div>
+            <div className="create_article_form_body">
+              <label htmlFor="body"> Body</label>
+              <textarea
+                rows={8}
+                cols={45}
+                name="body"
+                value={this.state.body}
                 onChange={this.handleInput}
               />
             </div>
-          </div>
-          <div className="create_article_form_body">
-            <label htmlFor="body"> Body</label>
-            <textarea
-              rows={8}
-              cols={45}
-              name="body"
-              value={this.state.body}
-              onChange={this.handleInput}
+            <input
+              className="create_article_form_submit_btn"
+              type="submit"
+              value="Create article"
             />
-          </div>
-          <input
-            className="create_article_form_submit_btn"
-            type="submit"
-            value="Create article"
-          />
-          {this.state.ok ? <p className="ok"> OK </p> : null}
-        </form>
+            {this.state.ok ? <p className="ok"> OK </p> : null}
+          </form>
+        </div>
       </div>
     );
   }

@@ -82,8 +82,8 @@ class Comment extends React.PureComponent<ICommentProps, ICommentState> {
           </div>
           {this.state.display === CommentDisplayStatus.Default ? (
             <div className="article_comment_body_message">
-              {" "}
-              {this.props.body}{" "}
+
+              {this.props.body}
             </div>
           ) : (
             <form

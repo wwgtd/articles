@@ -1,4 +1,13 @@
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, LOADING_USERS_ON, LOADING_USERS_OFF, USERS_WRITE_ERROR, IUsersState } from '../types/redux/users'
+import {
+  REGISTER_USER,
+  LOGIN_USER,
+  LOGOUT_USER,
+  LOADING_USERS_ON,
+  LOADING_USERS_OFF,
+  USERS_WRITE_ERROR,
+  RESET_ISREGISTRYSUCCESS,
+  IUsersState
+} from "../types/redux/users";
 
 const initialState: IUsersState = {
   user_data: null,
@@ -6,9 +15,12 @@ const initialState: IUsersState = {
   errors: null,
   loadingStatus: false,
   isRegistrySuccess: false
-}
+};
 
-export default function usersReducer(state = initialState, action: {type: string, payload: any}): IUsersState {
+export default function usersReducer(
+  state = initialState,
+  action: { type: string; payload: any }
+): IUsersState {
   switch (action.type) {
     case LOGIN_USER: {
       if (action.payload.success === true) {
@@ -18,7 +30,7 @@ export default function usersReducer(state = initialState, action: {type: string
           errors: null,
           loadingStatus: state.loadingStatus,
           isRegistrySuccess: state.isRegistrySuccess
-        }
+        };
       } else {
         return {
           user_data: null,
@@ -26,7 +38,7 @@ export default function usersReducer(state = initialState, action: {type: string
           errors: action.payload.errors,
           loadingStatus: state.loadingStatus,
           isRegistrySuccess: state.isRegistrySuccess
-        }
+        };
       }
     }
 
@@ -35,16 +47,27 @@ export default function usersReducer(state = initialState, action: {type: string
         return {
           user_data: state.user_data,
           auth_data: state.auth_data,
-          errors: 'user with that e-mail already registered',
+          errors: "user with that e-mail already registered",
           loadingStatus: state.loadingStatus,
           isRegistrySuccess: false
-        }
-      } else return {
+        };
+      } else
+        return {
+          user_data: state.user_data,
+          auth_data: state.auth_data,
+          errors: null,
+          loadingStatus: state.loadingStatus,
+          isRegistrySuccess: true
+        };
+    }
+
+    case RESET_ISREGISTRYSUCCESS: {
+      return {
         user_data: state.user_data,
         auth_data: state.auth_data,
-        errors: null,
+        errors: state.errors,
         loadingStatus: state.loadingStatus,
-        isRegistrySuccess: true
+        isRegistrySuccess: false
       }
     }
 
@@ -56,15 +79,15 @@ export default function usersReducer(state = initialState, action: {type: string
           errors: null,
           loadingStatus: state.loadingStatus,
           isRegistrySuccess: state.isRegistrySuccess
-        }
+        };
       } else {
         return {
           user_data: state.user_data,
           auth_data: state.auth_data,
-          errors: 'error',
+          errors: "error",
           loadingStatus: state.loadingStatus,
           isRegistrySuccess: state.isRegistrySuccess
-        }
+        };
       }
     }
 
@@ -75,7 +98,7 @@ export default function usersReducer(state = initialState, action: {type: string
         errors: state.errors,
         loadingStatus: true,
         isRegistrySuccess: state.isRegistrySuccess
-      }
+      };
     }
 
     case LOADING_USERS_OFF: {
@@ -85,7 +108,7 @@ export default function usersReducer(state = initialState, action: {type: string
         errors: state.errors,
         loadingStatus: false,
         isRegistrySuccess: state.isRegistrySuccess
-      }
+      };
     }
 
     case USERS_WRITE_ERROR: {
@@ -95,7 +118,7 @@ export default function usersReducer(state = initialState, action: {type: string
         errors: action.payload,
         loadingStatus: state.loadingStatus,
         isRegistrySuccess: state.isRegistrySuccess
-      }
+      };
     }
 
     default: {
@@ -105,7 +128,7 @@ export default function usersReducer(state = initialState, action: {type: string
         errors: state.errors,
         loadingStatus: state.loadingStatus,
         isRegistrySuccess: state.isRegistrySuccess
-      }
+      };
     }
   }
 }

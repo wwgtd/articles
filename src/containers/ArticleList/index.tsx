@@ -29,23 +29,26 @@ class ArticleList extends React.PureComponent<IArticleListProps> {
   };
 
   render() {
-    if (this.props.articles.data === undefined) return [];
+
+    if (Object.keys(this.props.articles.data).length < 1) {
+      return (
+        <div className="article_list_locked">
+          <p className="article_list_locked_text"> create article, please (article creation will be available after authorization)</p>
+        </div>)
+    }
 
     const articles = this.props.articles.data; // to reduce code
     return (
-      <div className="articlePreviewList">
-        <div className="articlePreviewHeader">
-          <div className="articlePreviewTitleHeader">
-            <b> title </b>
+      <div className="article_preview_list">
+        <div className="article_preview_header">
+          <div className="article_preview_title_header">
+            <span> title </span>
           </div>
           <div className="article_preview_header_ceil">
             <span className="article_preview_header_title">category</span>
           </div>
           <div className="article_preview_header_ceil">
             <span className="article_preview_header_title">created at</span>
-          </div>
-          <div className="article_preview_header_ceil">
-            <span className="article_preview_header_title">updated at</span>
           </div>
         </div>
         {Object.keys(articles).map(cur => {

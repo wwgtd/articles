@@ -4,6 +4,7 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const LOADING_USERS_ON = "LOADING_USERS_ON";
 export const LOADING_USERS_OFF = "LOADING_USERS_OFF";
 export const USERS_WRITE_ERROR = "USERS_WRITE_ERROR";
+export const RESET_ISREGISTRYSUCCESS = "RESET_ISREGISTRYSUCCESS";
 
 export interface IAuthData {
   id: number;

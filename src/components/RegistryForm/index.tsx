@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { writeLoginError } from "../../actions/userActions";
+import { writeLoginError, resetIsRegistrySuccess } from "../../actions/userActions";
 import { IUsersState } from "../../types/redux/users";
 import { api } from "../../actions/api";
 import { connect } from "react-redux";
@@ -9,6 +9,7 @@ interface IRegisterState {
   email: string;
   password: string;
   name: string;
+  successText: string;
 }
 
 interface IRegisterProps {
@@ -18,6 +19,7 @@ interface IRegisterProps {
     email: string;
   }) => boolean;
   writeError: (error: string) => void;
+  resetIsRegistrySuccess: () => void;
 
   users: IUsersState;
 }
@@ -25,15 +27,28 @@ interface IRegisterProps {
 class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
   constructor(props: IRegisterProps) {
     super(props);
-    this.state = { name: "", email: "", password: "" };
+    this.state = { name: "", email: "", password: "", successText: "" };
   }
 
   componentDidMount() {
     this.props.writeError("");
+    this.props.resetIsRegistrySuccess();
   }
 
-  handleInput = (e: any) =>
+  componentDidUpdate() {
+    if (this.props.users.isRegistrySuccess === true) {
+      this.setState({...this.state, successText: "success"});
+      setTimeout(() => this.props.resetIsRegistrySuccess(), 1000);
+    } else if (this.props.users.isRegistrySuccess === false) {
+      this.setState({...this.state, successText: ""});
+    }
+  }
+
+
+  handleInput = (e: any) => {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
+  }
+
   handleSubmit = (e: any) => {
     e.preventDefault();
     this.props.writeError("");
@@ -49,7 +64,6 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
     } else if (!reUser.test(this.state.name)) {
       this.props.writeError("incorrect username");
     } else {
-      console.log("fdsfds");
       this.props.register(this.state);
     }
   };
@@ -90,11 +104,7 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
         ) : (
           undefined
         )}
-        {this.props.users.isRegistrySuccess ? (
-          <p className="success"> Successfully registered </p>
-        ) : (
-          undefined
-        )}
+        <p className="success"> {this.state.successText} </p>
       </form>
     );
   }
@@ -113,7 +123,8 @@ const mapDispatchToProps = (dispatch: any) => {
       password: string;
       email: string;
     }): boolean => dispatch(api.users.register(payload)),
-    writeError: (error: string) => dispatch(writeLoginError(error))
+    writeError: (error: string) => dispatch(writeLoginError(error)),
+    resetIsRegistrySuccess: () => dispatch(resetIsRegistrySuccess()),
   };
 };
 

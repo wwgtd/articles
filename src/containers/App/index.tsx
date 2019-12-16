@@ -43,11 +43,3 @@ export default class App extends React.PureComponent<{}> {
     );
   }
 }
-/*
-import ArticlePreviewListPage from '../../pages/ArticlePreviewListPage'
-import ArticlePage from '../../pages/ArticlePage'*/
-
-//            <Route exact path="/registry">  <RegistryPage /> </Route>
-//      <Route exact path='/'> <Redirect to='/articles' /> </Route>
-////      <Route exact path="/articles"> <ArticlePreviewListPage /> </Route>
-////      <Route path="/article/:id"> <ArticlePage /> </Route>
