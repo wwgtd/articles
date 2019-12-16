@@ -35,7 +35,7 @@ export default class App extends React.PureComponent<{}> {
               <Route exact path="/articles">
                 <ArticlesPreviewListPage />
               </Route>
-              <Route path="/article/:id" component={ArticlePage} />
+              <Route path="/articles/:id" component={ArticlePage} />
             </Switch>
           </Router>
         </Provider>

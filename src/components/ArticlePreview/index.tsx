@@ -21,7 +21,7 @@ const ArticlePreview = React.memo((props: IArticlePreviewProps) => {
     isLogged = props.users.user_data.access_level === "10" ? true : false;
   }
   return (
-    <Link to={`/article/${props.id}`} className="article_preview">
+    <Link to={`/articles/${props.id}`} className="article_preview">
       <div className="article_preview_title">
         <span className="articlePreviewTitle">
           {props.title || "title"}
