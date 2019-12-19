@@ -3,7 +3,7 @@ import "./style.css";
 import Comment from "../../components/Comment/";
 import { IUsersState } from "../../types/redux/users";
 import { IArticlesState } from "../../types/redux/articles";
-import { ICommentsState, IComment } from "../../types/redux/comments";
+import { IComment } from "../../types/redux/comments";
 import { connect } from "react-redux";
 import { api } from "../../actions/api";
 
@@ -19,7 +19,6 @@ interface IArticleProps {
 
   article_id: number;
   articles: IArticlesState;
-  comments: ICommentsState;
   users: IUsersState;
 }
 
@@ -103,20 +102,20 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
               <div className="article_starter_message">
                 <div className="article_starter_message_author">
                   {article.user!.name}
+                  {isLoggedAdmin ? (
+                    <button
+                      className="starter_post_btn_edit"
+                      onClick={() => this.changeDisplay()}
+                    >
+                      Edit
+                    </button>
+                  ) : null}
                 </div>
                 <div className="article_starter_message_body">
                   <div className="article_starter_message_body_created_at">
                     <span style={{ float: "right" }}>
                       {article!.created_at}
                     </span>
-                    {isLoggedAdmin ? (
-                      <button
-                        className="starter_post_btn_edit"
-                        onClick={() => this.changeDisplay()}
-                      >
-                        Edit article
-                      </button>
-                    ) : null}
                   </div>
                   {this.state.display === ArticleDisplayStatus.Default ? (
                     <div className="article_starter_message_body_message">
@@ -129,6 +128,8 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
                     >
                       <div className="update_article_form_body">
                         <textarea
+                          rows={5}
+                          cols={80}
                           name="articleBody"
                           value={this.state.articleBody}
                           onChange={this.handleInput}
@@ -194,8 +195,6 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
 
 const mapStateToProps = (state: any) => {
   return {
-    articles: state.articles,
-    comments: state.comments,
     users: state.users
   };
 };

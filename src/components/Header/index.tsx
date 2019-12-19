@@ -2,23 +2,43 @@ import React from "react";
 import "./style.css";
 import { IUsersState, IAuthData } from "../../types/redux/users";
 import { Link } from "react-router-dom";
+import { IArticlesState } from "../../types/redux/articles";
 import { connect } from "react-redux";
 import { api, clearMockData } from "../../actions/api";
 
 interface IHeaderProps {
   users: IUsersState;
+  articles?: IArticlesState;
+
   logout: (data: IAuthData) => void;
 }
 
 const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
+  const re = /^.*\/articles\/[\d]+$/;
+  let title: string | undefined;
+  let location = window.location.href;
+  if (re.test(location)) {
+    title =
+      props.articles!.current !== undefined
+        ? props.articles!.current!.title
+        : undefined;
+    let relHrefStart = location.search(/\/articles\//);
+    location = location.slice(relHrefStart);
+  } else title = undefined;
+
   return (
     <header>
-      <div className="headerInformation">
-        <Link to="/articles">
-          <button className="linkArticles" type="button"> Articles </button>
-        </Link>
+      <div className="header_information">
+        <div className="header_curved_button">
+          <Link to="/articles">{"Articles"}</Link>
+        </div>
+        {title !== undefined ? (
+          <div className="header_curved_button">
+            <Link to={location}>{title}</Link>
+          </div>
+        ) : null}
       </div>
-      <div className="headerLogin">
+      <div className="header_login_btns">
         {props.users.user_data ? (
           <>
             <button
@@ -50,12 +70,12 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
               Clear data
             </button>
             <Link to="/login">
-              <button className="loginLogin" type="button">
+              <button className="login_signin" type="button">
                 Login
               </button>
             </Link>
             <Link to="/registry">
-              <button className="loginSignup" type="button">
+              <button className="login_signup" type="button">
                 SignUp
               </button>
             </Link>

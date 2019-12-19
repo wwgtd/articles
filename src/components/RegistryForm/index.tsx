@@ -1,6 +1,9 @@
 import React from "react";
 import "./style.css";
-import { writeLoginError, resetIsRegistrySuccess } from "../../actions/userActions";
+import {
+  writeLoginError,
+  resetIsRegistrySuccess
+} from "../../actions/userActions";
 import { IUsersState } from "../../types/redux/users";
 import { api } from "../../actions/api";
 import { connect } from "react-redux";
@@ -37,17 +40,16 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
 
   componentDidUpdate() {
     if (this.props.users.isRegistrySuccess === true) {
-      this.setState({...this.state, successText: "success"});
+      this.setState({ ...this.state, successText: "success" });
       setTimeout(() => this.props.resetIsRegistrySuccess(), 1000);
     } else if (this.props.users.isRegistrySuccess === false) {
-      this.setState({...this.state, successText: ""});
+      this.setState({ ...this.state, successText: "" });
     }
   }
 
-
   handleInput = (e: any) => {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
-  }
+  };
 
   handleSubmit = (e: any) => {
     e.preventDefault();
@@ -124,7 +126,7 @@ const mapDispatchToProps = (dispatch: any) => {
       email: string;
     }): boolean => dispatch(api.users.register(payload)),
     writeError: (error: string) => dispatch(writeLoginError(error)),
-    resetIsRegistrySuccess: () => dispatch(resetIsRegistrySuccess()),
+    resetIsRegistrySuccess: () => dispatch(resetIsRegistrySuccess())
   };
 };
 

@@ -50,11 +50,10 @@ class CreateArticleForm extends React.PureComponent<
   render() {
     return (
       <div className="create_article_frame">
-
         <div className="create_article_form_btn">
           <button className="frame_close_btn" onClick={this.props.onClick}>
-          x
-        </button>
+            x
+          </button>
         </div>
 
         <div className="create_article_form">
@@ -69,7 +68,6 @@ class CreateArticleForm extends React.PureComponent<
                 {Object.keys(this.props.categories.data).map(cur => {
                   return (
                     <option key={cur} value={cur}>
-
                       {this.props.categories.data[cur].name}
                     </option>
                   );

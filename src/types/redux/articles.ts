@@ -27,8 +27,8 @@ export interface IArticle {
   created_at: string;
   updated_at: string;
   category_id: number;
-  body: string;
   title: string;
+  body: string;
   user_id: number;
   user?: IUser;
   icon_id?: string;

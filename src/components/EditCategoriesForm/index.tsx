@@ -71,7 +71,6 @@ class EditCategoriesForm extends React.PureComponent<
               className="change_edit_categories_display_btn"
               onClick={() => this.changeDisplay(DisplayStatus.EditCategory)}
             >
-
               Edit category
             </button>
             <button className="frame_close_btn" onClick={this.props.onClick}>
@@ -81,7 +80,6 @@ class EditCategoriesForm extends React.PureComponent<
           <form onSubmit={this.handleSubmit} className="edit_categories_form">
             <div>
               <label htmlFor="name">
-
                 New category name: <br /> <br />
               </label>
               <input
@@ -120,7 +118,11 @@ class EditCategoriesForm extends React.PureComponent<
           </div>
           <div className="edit_categories_form">
             <form onSubmit={this.handleSubmit}>
-              <select value={this.state.id} name="id" onChange={this.handleInput}>
+              <select
+                value={this.state.id}
+                name="id"
+                onChange={this.handleInput}
+              >
                 {Object.keys(this.props.categories.data).map(cur => {
                   return (
                     <option key={cur} value={cur}>
@@ -137,7 +139,6 @@ class EditCategoriesForm extends React.PureComponent<
               />
               <div>
                 <label htmlFor="name">
-
                   Edit category name to: <br />
                 </label>
                 <input
@@ -166,14 +167,15 @@ class EditCategoriesForm extends React.PureComponent<
               onClick={() =>
                 this.changeDisplay(DisplayStatus.CreateNewCategory)
               }
-            >Create new category
+            >
+              Create new category
             </button>
             <button className="frame_close_btn" onClick={this.props.onClick}>
               x
             </button>
-        </div>
+          </div>
 
-          <div className='edit_categories_form_error'>
+          <div className="edit_categories_form_error">
             <p> please, create a category before editing </p>
           </div>
         </div>

@@ -23,9 +23,7 @@ const ArticlePreview = React.memo((props: IArticlePreviewProps) => {
   return (
     <Link to={`/articles/${props.id}`} className="article_preview">
       <div className="article_preview_title">
-        <span className="articlePreviewTitle">
-          {props.title || "title"}
-        </span>
+        <span className="articlePreviewTitle">{props.title || "title"}</span>
         {isLogged ? (
           <button
             type="button"

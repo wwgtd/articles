@@ -56,17 +56,16 @@ class ArticlesPreviewListPage extends React.PureComponent<
             }
           />
         ) : null}
-          {this.state.display === DisplayStatus.EditCategories ? (
-            <EditCategoriesForm
-              onClick={() => this.changeDisplay(DisplayStatus.Default)}
-            />
-          ) : null}
-          {this.state.display === DisplayStatus.CreateNewArticle ? (
-            <CreateArticleForm
-              onClick={() => this.changeDisplay(DisplayStatus.Default)}
-            />
-          ) : null}
-
+        {this.state.display === DisplayStatus.EditCategories ? (
+          <EditCategoriesForm
+            onClick={() => this.changeDisplay(DisplayStatus.Default)}
+          />
+        ) : null}
+        {this.state.display === DisplayStatus.CreateNewArticle ? (
+          <CreateArticleForm
+            onClick={() => this.changeDisplay(DisplayStatus.Default)}
+          />
+        ) : null}
       </div>
     );
   }

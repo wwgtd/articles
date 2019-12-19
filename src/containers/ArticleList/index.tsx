@@ -29,12 +29,16 @@ class ArticleList extends React.PureComponent<IArticleListProps> {
   };
 
   render() {
-
     if (Object.keys(this.props.articles.data).length < 1) {
       return (
         <div className="article_list_locked">
-          <p className="article_list_locked_text"> create article, please (article creation will be available after authorization)</p>
-        </div>)
+          <p className="article_list_locked_text">
+            {" "}
+            create article, please (article creation will be available after
+            authorization)
+          </p>
+        </div>
+      );
     }
 
     const articles = this.props.articles.data; // to reduce code

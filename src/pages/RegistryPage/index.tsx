@@ -5,7 +5,7 @@ import RegistryForm from "../../components/RegistryForm";
 export default React.memo(() => {
   return (
     <>
-      <Header />,
+      <Header />
       <RegistryForm />
     </>
   );

@@ -43,7 +43,9 @@
   display: block;
 }
 
-.create_article_form_body > textarea, .create_article_form_select > select, .title_input {
+.create_article_form_body > textarea,
+.create_article_form_select > select,
+.title_input {
   display: block;
   box-sizing: border-box;
   margin: 0 auto;

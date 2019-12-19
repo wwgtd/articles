@@ -4,6 +4,7 @@ import { ICategory, ICategorySyncAnswer } from "../types/redux/category";
 import { ICommentSyncAnswer } from "../types/redux/comments";
 import { ILoginAnswer, IAuthData } from "../types/redux/users";
 import { Mock_DB } from "../types/redux/mock_db";
+import InitialMockDb from "./initialMockDb";
 
 import {
   createArticle,
@@ -33,16 +34,10 @@ import {
   writeLoginError
 } from "./userActions";
 
-let mock_db: Mock_DB = {
-  articles: {},
-  category: {},
-  comments: {},
-  users: {}
-};
+let mock_db: Mock_DB = InitialMockDb;
 
 if (window.localStorage.hasOwnProperty("mock")) {
-  let mock: Mock_DB = JSON.parse(window.localStorage.getItem("mock")!);
-  mock_db = mock;
+  mock_db = JSON.parse(window.localStorage.getItem("mock")!);
 }
 
 let article_id =
@@ -61,9 +56,6 @@ let user_id =
   Object.keys(mock_db.users).length !== 0
     ? Object.keys(mock_db.users).length
     : 0;
-
-console.log("in main code" + comment_id);
-console.log(Object.keys(mock_db.comments).length);
 
 window.addEventListener("beforeunload", function(e: any) {
   let db: string = JSON.stringify(mock_db);
@@ -100,8 +92,8 @@ const mock_api: API = {
           [article_id]: {
             id: article_id,
             ...params.data,
-            created_at: (new Date()).toLocaleString(),
-            updated_at: (new Date()).toLocaleString()
+            created_at: new Date().toLocaleString(),
+            updated_at: new Date().toLocaleString()
           }
         };
         const target = mock_db.articles[article_id];
@@ -145,7 +137,6 @@ const mock_api: API = {
             });
           }
         }
-        console.log(target);
         res(target);
       }),
 
@@ -157,7 +148,7 @@ const mock_api: API = {
         mock_db.articles[params.data.id!] = {
           ...mock_db.articles[params.data.id!],
           ...params.data,
-          updated_at: (new Date()).toLocaleString()
+          updated_at: new Date().toLocaleString()
         };
         res({ success: true, data: mock_db.articles[params.data.id!] });
       }),
@@ -223,8 +214,8 @@ const mock_api: API = {
           body: params.data.body,
           user_id: params.data.user_id!,
           article_id: params.data.article_id,
-          created_at: (new Date()).toLocaleString(),
-          updated_at: (new Date()).toLocaleString()
+          created_at: new Date().toLocaleString(),
+          updated_at: new Date().toLocaleString()
         };
         comment_id++;
         console.log("incomments" + comment_id);
@@ -239,7 +230,7 @@ const mock_api: API = {
         mock_db.comments[params.data.id!] = {
           ...mock_db.comments[params.data.id!],
           ...params.data,
-          updated_at: (new Date()).toLocaleString()
+          updated_at: new Date().toLocaleString()
         };
         res({ success: true });
       })
@@ -255,8 +246,8 @@ const mock_api: API = {
           ...payload,
           id: user_id,
           access_level: "10",
-          created_at: (new Date()).toLocaleString(),
-          updated_at: (new Date()).toLocaleString(),
+          created_at: new Date().toLocaleString(),
+          updated_at: new Date().toLocaleString(),
           activated: true
         };
         user_id++;

@@ -68,7 +68,7 @@ export default function usersReducer(
         errors: state.errors,
         loadingStatus: state.loadingStatus,
         isRegistrySuccess: false
-      }
+      };
     }
 
     case LOGOUT_USER: {

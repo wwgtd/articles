@@ -82,7 +82,6 @@ class Comment extends React.PureComponent<ICommentProps, ICommentState> {
           </div>
           {this.state.display === CommentDisplayStatus.Default ? (
             <div className="article_comment_body_message">
-
               {this.props.body}
             </div>
           ) : (
@@ -92,6 +91,8 @@ class Comment extends React.PureComponent<ICommentProps, ICommentState> {
             >
               <div className="update_article_form_body">
                 <textarea
+                  rows={5}
+                  cols={80}
                   name="commentBody"
                   value={this.state.commentBody}
                   onChange={this.handleInput}

@@ -53,5 +53,5 @@ export function userLoadingOff() {
 export function resetIsRegistrySuccess() {
   return {
     type: RESET_ISREGISTRYSUCCESS
-  }
+  };
 }
