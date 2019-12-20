@@ -1,6 +1,5 @@
-.articlePreview:first-child {
+.article_preview:first-child {
   border-top: 1px solid black;
-  border-radius: 1%;
 }
 .article_preview {
   display: grid;
@@ -19,28 +18,21 @@
   background-color: #66b3ff;
 }
 
-.article_preview_ceil {
-  display: grid;
-  border-left: 1px solid white;
+.article_preview_ceil, .article_preview_title {
   padding: 8px;
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
-.article_preview_title {
-  position: relative;
-  margin: auto 0;
-  padding: 0 8px;
-  cursor: pointer;
+.article_preview_ceil {
+  border-left: 1px solid white;
 }
 
 .delete_article_btn {
-  position: absolute;
-  right: 1%;
+  float: right;
 
   padding: 3px;
   border: 0.5px solid;
   border-radius: 10%;
-  float: right;
   color: black;
   background: #a3bffa;
 }

@@ -106,7 +106,7 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
         ) : (
           undefined
         )}
-        <p className="success_login"> {this.state.successText} </p>
+        {this.state.successText !== "" ? <p className="success_login"> {this.state.successText} </p> : undefined }
       </form>
     );
   }

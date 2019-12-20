@@ -3,27 +3,26 @@
   border-radius: 5%;
   width: 150px;
   margin: 10% auto 0 auto;
-  padding: 5px;
+  padding: 10px;
 }
 
 .register_form > div {
   display: block;
-  padding: 2%;
 }
 
 .register_form > div > input {
-  width: 96%;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .register_form > input {
   color: black;
   background: #a3bffa;
-
   border-radius: 10%;
   border: 1px solid white;
   display: block;
   width: 40%;
-  padding: 3px;
+  padding: 2px;
   margin: 3px auto 0 auto;
 }
 

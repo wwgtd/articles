@@ -49,7 +49,7 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
             >
               Clear data
             </button>
-            <button type="button" className="login_info">
+            <button disabled type="button" className="login_info">
               Your account: {props.users.user_data.name}
             </button>
             <button

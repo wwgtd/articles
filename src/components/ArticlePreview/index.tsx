@@ -23,7 +23,7 @@ const ArticlePreview = React.memo((props: IArticlePreviewProps) => {
   return (
     <Link to={`/articles/${props.id}`} className="article_preview">
       <div className="article_preview_title">
-        <span className="articlePreviewTitle">{props.title || "title"}</span>
+        {props.title || "title"}
         {isLogged ? (
           <button
             type="button"
@@ -35,10 +35,10 @@ const ArticlePreview = React.memo((props: IArticlePreviewProps) => {
         ) : null}
       </div>
       <div className="article_preview_ceil">
-        <span className="articlePreviewCategory">{props.categoryName}</span>
+        {props.categoryName}
       </div>
       <div className="article_preview_ceil">
-        <div className="articlePreviewCreated_at">{props.created_at}</div>
+        {props.created_at}
       </div>
     </Link>
   );

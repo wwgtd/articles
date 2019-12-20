@@ -42,11 +42,11 @@ if (window.localStorage.hasOwnProperty("mock")) {
 
 let article_id =
   Object.keys(mock_db.articles).length !== 0
-    ? Object.keys(mock_db.users).length
+    ? Object.keys(mock_db.articles).length
     : 0;
 let category_id =
   Object.keys(mock_db.category).length !== 0
-    ? Object.keys(mock_db.users).length
+    ? Object.keys(mock_db.category).length
     : 0;
 let comment_id =
   Object.keys(mock_db.comments).length !== 0
@@ -57,10 +57,16 @@ let user_id =
     ? Object.keys(mock_db.users).length
     : 0;
 
+window.addEventListener("userCreated", function(e: any) {
+  let db: string = JSON.stringify(mock_db);
+  window.localStorage.setItem("mock", db);
+});
+
 window.addEventListener("beforeunload", function(e: any) {
   let db: string = JSON.stringify(mock_db);
   window.localStorage.setItem("mock", db);
 });
+
 
 window.addEventListener("userCreated", function(e: any) {
   let db: string = JSON.stringify(mock_db);
