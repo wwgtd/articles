@@ -1,0 +1,43 @@
+@import (reference) '../../sharedCss/style.less';
+
+.create_article_frame {
+    position: fixed;
+    width: 50%;
+    min-height: 55%;
+    z-index: 0;
+    top: 10%;
+    left: 25%;
+
+    background-color: @color_pretty_white;
+    border: 1px solid;
+
+    .create_article_form {
+        z-index: 0;
+        position: relative;
+        height: 90%;
+        width: 100%;
+        text-align: center;
+
+
+        .create_article_form_select,
+        .create_article_form_title,
+        .create_article_form_body {
+            margin: 1% 0;
+        }
+
+        .create_article_form_body > textarea,
+        .create_article_form_select > select,
+        .title_input {
+            display: block;
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 80%!important;
+        }
+    }
+
+    .create_article_form_submit_btn {
+        text-align: center;
+        padding: 3px;
+        margin: 3px;
+    }
+}

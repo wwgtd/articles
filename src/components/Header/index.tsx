@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.less";
 import { IUsersState, IAuthData } from "../../types/redux/users";
 import { Link } from "react-router-dom";
 import { IArticlesState } from "../../types/redux/articles";
@@ -42,18 +42,18 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
         {props.users.user_data ? (
           <>
             <button
-              className="clear_mock_data_btn"
+              className="clear_mock_data_btn common_button"
               onClick={() => {
                 clearMockData();
               }}
             >
               Clear data
             </button>
-            <button disabled type="button" className="login_info">
+            <button disabled type="button" className="login_info common_button">
               Your account: {props.users.user_data.name}
             </button>
             <button
-              className="header_logout"
+              className="header_logout common_button"
               onClick={() => props.logout(props.users.auth_data!)}
             >
               Logout
@@ -62,7 +62,7 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
         ) : (
           <>
             <button
-              className="clear_mock_data_btn"
+              className="clear_mock_data_btn common_button"
               onClick={() => {
                 clearMockData();
               }}
@@ -70,12 +70,12 @@ const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
               Clear data
             </button>
             <Link to="/login">
-              <button className="login_signin" type="button">
+              <button className="login_signin common_button" type="button">
                 Login
               </button>
             </Link>
             <Link to="/registry">
-              <button className="login_signup" type="button">
+              <button className="login_signup common_button" type="button">
                 SignUp
               </button>
             </Link>

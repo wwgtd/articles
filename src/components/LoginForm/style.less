@@ -1,0 +1,40 @@
+@import (reference) '../../sharedCss/style.less';
+
+.login_form {
+    border: 1px solid black;
+    border-radius: 5%;
+    width: 150px;
+    margin: 10% auto 0 auto;
+    padding: 5px;
+
+    input {
+      color: black;
+
+      display: block;
+      width: 35%;
+      padding: 3px;
+      border: 1px solid white;
+      border-radius: 10%;
+      margin: 3px auto 0 auto;
+    }
+
+
+    div {
+        display: block;
+        padding: 2%;
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+
+            border: 0.5px solid;
+            border-radius: 0;
+            border-color: black;
+        }
+    }
+
+    .login_error {
+      color: red;
+      text-align: center;
+    }
+}

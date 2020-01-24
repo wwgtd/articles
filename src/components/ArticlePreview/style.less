@@ -1,0 +1,31 @@
+@import (reference) '../../sharedCss/style.less';
+
+.article_preview {
+  display: grid;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  text-decoration: none;
+  color: black;
+
+  background: @color_light_blue;
+
+  &:first-child {
+    border-top: 1px solid black;
+  }
+
+  &:hover {
+    background-color: @color_light_blue_hovered;
+  }
+
+  .article_preview_ceil, .article_preview_title {
+    padding: 8px;
+    font-size: 0.95em;
+  }
+
+  .article_preview_ceil {
+    border-left: 1px solid white;
+  }
+}

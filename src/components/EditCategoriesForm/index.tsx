@@ -1,5 +1,5 @@
+import "./style.less";
 import React from "react";
-import "./style.css";
 import { ICategoriesState } from "../../types/redux/category";
 import { connect } from "react-redux";
 import { api } from "../../actions/api";
@@ -73,10 +73,13 @@ class EditCategoriesForm extends React.PureComponent<
             >
               Edit category
             </button>
-            <button className="frame_close_btn" onClick={this.props.onClick}>
+            <div className="frame_close_btn_wrapper">
+                <button className="frame_close_btn" onClick={this.props.onClick}>
               x
             </button>
+            </div>
           </div>
+
           <form onSubmit={this.handleSubmit} className="edit_categories_form">
             <div>
               <label htmlFor="name">
@@ -92,7 +95,7 @@ class EditCategoriesForm extends React.PureComponent<
               />
             </div>
             <input
-              className="change_edit_categories_display_btn submit_btn"
+              className="edit_category_submit common_button"
               type="submit"
               value="Submit"
             />
@@ -112,9 +115,11 @@ class EditCategoriesForm extends React.PureComponent<
             >
               Create new category
             </button>
-            <button className="frame_close_btn" onClick={this.props.onClick}>
-              x
-            </button>
+            <div className="frame_close_btn_wrapper">
+                <button className="frame_close_btn" onClick={this.props.onClick}>
+                  x
+                </button>
+            </div>
           </div>
           <div className="edit_categories_form">
             <form onSubmit={this.handleSubmit}>
@@ -149,7 +154,8 @@ class EditCategoriesForm extends React.PureComponent<
                 />
               </div>
               <input
-                className="change_edit_categories_display_btn submit_btn"
+                className="edit_category_submit common_button"
+
                 type="submit"
                 value="Submit"
               />
@@ -162,23 +168,25 @@ class EditCategoriesForm extends React.PureComponent<
       return (
         <div className="edit_categories_frame">
           <div className="edit_categories_btns">
-            <button
-              className="change_edit_categories_display_btn"
-              onClick={() =>
-                this.changeDisplay(DisplayStatus.CreateNewCategory)
-              }
-            >
-              Create new category
-            </button>
-            <button className="frame_close_btn" onClick={this.props.onClick}>
-              x
-            </button>
-          </div>
+            <div>
+                <button
+                    className="change_edit_categories_display_btn"
+                    onClick={() => this.changeDisplay(DisplayStatus.CreateNewCategory)}>
+                Create new category
+                </button>
+            </div>
 
-          <div className="edit_categories_form_error">
-            <p> please, create a category before editing </p>
-          </div>
+            <div className="frame_close_btn_wrapper">
+                <button className="frame_close_btn" onClick={this.props.onClick}>
+                    x
+              </button>
+            </div>
+
+            <div className="edit_categories_form_error">
+                <p> please, create a category before editing </p>
+            </div>
         </div>
+      </div>
       );
     }
   }
@@ -186,7 +194,7 @@ class EditCategoriesForm extends React.PureComponent<
 
 const mapStateToProps = (state: any) => {
   return {
-    categories: state.categories
+    categories: state.categories,
   };
 };
 

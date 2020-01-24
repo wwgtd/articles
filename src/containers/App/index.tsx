@@ -1,5 +1,6 @@
+import "./style.less"
+
 import React from "react";
-import "./style.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router";
 

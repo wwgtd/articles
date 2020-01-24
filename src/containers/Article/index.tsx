@@ -1,11 +1,12 @@
+import "./style.less";
 import React from "react";
-import "./style.css";
 import Comment from "../../components/Comment/";
 import { IUsersState } from "../../types/redux/users";
 import { IArticlesState } from "../../types/redux/articles";
 import { IComment } from "../../types/redux/comments";
 import { connect } from "react-redux";
 import { api } from "../../actions/api";
+import { Redirect } from 'react-router-dom'
 
 enum ArticleDisplayStatus {
   Default = 0,
@@ -16,6 +17,7 @@ interface IArticleProps {
   getArticle: (id: number) => void;
   updateArticle: (params: { id: number; body: string }) => void;
   createComment: (params: { article_id: number; body: string }) => void;
+  deleteArticle: (id: number) => void;
 
   article_id: number;
   articles: IArticlesState;
@@ -26,6 +28,7 @@ interface IArticleState {
   display: ArticleDisplayStatus;
   articleBody: string;
   commentBody: string;
+  redirect: boolean;
 }
 
 class Article extends React.PureComponent<IArticleProps, IArticleState> {
@@ -35,7 +38,8 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
     this.state = {
       display: ArticleDisplayStatus.Default,
       articleBody: "",
-      commentBody: ""
+      commentBody: "",
+      redirect: false
     };
   }
 
@@ -45,6 +49,17 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
         ...this.state,
         articleBody: this.props.articles!.current!.body
       });
+    }
+  }
+
+  deleteArticle = (id: number) => {
+    this.props.deleteArticle(id);
+    this.setState({redirect: true});
+  }
+
+  redirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/articles' />
     }
   }
 
@@ -84,7 +99,7 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
     if (this.props.users.user_data !== null) {
       isLoggedAdmin =
         this.props.users.user_data.access_level === "10" ? true : false;
-    }
+    };
 
     const isLogged = this.props.users.user_data !== null ? true : false;
 
@@ -93,9 +108,19 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
       return (
         <div className="article_page">
           <div className="article">
-            <div className="articleHeader">
-              <div className="articleAuthor"> Author </div>
-              <div className="articleTitle"> {article.title} </div>
+            <div className="article_header">
+              <div className="article_author"> Author </div>
+              <div className="article_title">
+                {article.title}
+                { isLoggedAdmin ?
+                  <>
+                    {this.redirect()}
+                    <button  className='delete_article_btn common_button' onClick={() => this.deleteArticle(this.props.article_id)}>
+                      Delete article
+                    </button>
+                  </>
+                  : null }
+              </div>
             </div>
 
             <div className="article_messages">
@@ -104,7 +129,7 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
                   {article.user!.name}
                   {isLoggedAdmin ? (
                     <button
-                      className="starter_post_btn_edit"
+                      className="starter_post_btn_edit common_button"
                       onClick={() => this.changeDisplay()}
                     >
                       Edit
@@ -136,7 +161,7 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
                         />
                       </div>
                       <input
-                        className="update_article_form_submit_btn"
+                        className="update_article_form_submit_btn common_button"
                         type="submit"
                         value="Update article"
                       />
@@ -149,9 +174,7 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
                 {article.comments!.map((cur: IComment, idx: number) => {
                   return (
                     <Comment
-                      updateArticle={() =>
-                        this.props.getArticle(this.props.article_id)
-                      }
+                      article_id={this.props.article_id}
                       isLoggedAdmin={isLoggedAdmin}
                       id={cur.id}
                       key={idx}
@@ -181,7 +204,7 @@ class Article extends React.PureComponent<IArticleProps, IArticleState> {
                 />
               </div>
               <input
-                className="article_create_comment_submit_btn"
+                className="article_create_comment_submit_btn common_button"
                 type="submit"
                 value="Submit comment"
               />
@@ -201,12 +224,16 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    getArticle: (id: number) => dispatch(api.articles.getOne(id)),
+    getArticle: (id: number) =>
+      dispatch(api.articles.getOne(id)),
     updateArticle: (params: { id: number; body: string }) =>
       dispatch(api.articles.update(params)),
     createComment: (params: { article_id: number; body: string }) =>
-      dispatch(api.comments.create(params))
+      dispatch(api.comments.create(params)),
+    deleteArticle: (id: number) =>
+      dispatch(api.articles.delete(id))
   };
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

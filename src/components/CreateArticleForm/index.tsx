@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.less";
 import { ICategoriesState } from "../../types/redux/category";
 import { connect } from "react-redux";
 import { api } from "../../actions/api";
@@ -50,7 +50,7 @@ class CreateArticleForm extends React.PureComponent<
   render() {
     return (
       <div className="create_article_frame">
-        <div className="create_article_form_btn">
+        <div className="frame_close_btn_wrapper">
           <button className="frame_close_btn" onClick={this.props.onClick}>
             x
           </button>
@@ -66,14 +66,15 @@ class CreateArticleForm extends React.PureComponent<
                 onChange={this.handleInput}
               >
                 {Object.keys(this.props.categories.data).map(cur => {
-                  return (
-                    <option key={cur} value={cur}>
-                      {this.props.categories.data[cur].name}
-                    </option>
-                  );
-                })}
+                        return (
+                        <option key={cur} value={cur}>
+                          {this.props.categories.data[cur].name}
+                        </option>
+                      );
+                  })}
               </select>
-              <div className="create_article_form_title">
+            </div>
+            <div className="create_article_form_title">
                 <label htmlFor="title"> Title </label>
                 <input
                   className="title_input"
@@ -82,12 +83,11 @@ class CreateArticleForm extends React.PureComponent<
                   value={this.state.title}
                   onChange={this.handleInput}
                 />
-              </div>
             </div>
             <div className="create_article_form_body">
               <label htmlFor="body"> Body</label>
               <textarea
-                rows={8}
+                rows={13}
                 cols={45}
                 name="body"
                 value={this.state.body}
@@ -95,7 +95,7 @@ class CreateArticleForm extends React.PureComponent<
               />
             </div>
             <input
-              className="create_article_form_submit_btn"
+              className="create_article_form_submit_btn common_button"
               type="submit"
               value="Create article"
             />

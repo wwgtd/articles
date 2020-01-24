@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.less";
 import {
   writeLoginError,
   resetIsRegistrySuccess
@@ -100,7 +100,7 @@ class RegistryForm extends React.PureComponent<IRegisterProps, IRegisterState> {
             onChange={this.handleInput}
           />
         </div>
-        <input type="submit" value="Register" />
+        <input className='common_button' type="submit" value="Register" />
         {this.props.users.errors ? (
           <p className="login_error"> {this.props.users.errors} </p>
         ) : (

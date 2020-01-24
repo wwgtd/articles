@@ -1,0 +1,67 @@
+@import (reference) '../../sharedCss/style.less';
+
+.edit_categories_frame {
+  position: fixed;
+  z-index: 0;
+  width: 50%;
+  min-height: 30%;
+  top: 10%;
+  left: 25%;
+
+  background-color: @color_pretty_white;
+  border: 1px solid;
+
+  .edit_categories_btns {
+    height: 20%;
+
+    .change_edit_categories_display_btn {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+
+        background: @color_dark_blue;
+        color: black;
+
+        &:hover {
+            background: @color_dark_blue_hovered;
+        }
+    }
+  }
+
+  .edit_categories_form {
+    position: relative;
+
+    box-sizing: border-box;
+    padding-top: 30px;
+    width: 100%;
+    height: 84%;
+    text-align: center;
+
+    form > select {
+      width: 30%;
+      margin-bottom: 3%;
+    }
+
+    .new_category_name_input .ok {
+      color: green;
+    }
+
+    .edit_category_submit {
+        margin: 20px;
+    }
+
+    .create_new_category_btn {
+        text-align: center;
+        padding: 3px;
+        margin: 10px;
+    }
+  }
+
+
+
+  .edit_categories_form_error {
+    height: 60%;
+    text-align: center;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.less";
 import { writeLoginError } from "../../actions/userActions";
 
 import { IUsersState } from "../../types/redux/users";
@@ -63,7 +63,7 @@ class LoginForm extends React.PureComponent<ILoginProps, ILoginState> {
                 onChange={this.handleInput}
               />
             </div>
-            <input type="submit" value="Login" />
+            <input className="common_button" type="submit" value="Login" />
             {this.props.users.errors ? (
               <p className="login_error"> {this.props.users.errors} </p>
             ) : (

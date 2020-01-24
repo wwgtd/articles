@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.css";
+import React, { useState, useCallback, useEffect } from "react";
+import "./style.less";
 import { api } from "../../actions/api";
 import { connect } from "react-redux";
 
@@ -10,8 +10,9 @@ enum CommentDisplayStatus {
 
 interface ICommentProps {
   updateComment: (params: { id: number; body: string }) => void;
-  updateArticle: () => void;
+  getArticle: (article_id: number) => void;
 
+  article_id: number;
   isLoggedAdmin: boolean;
   username: string;
   body: string;
@@ -20,101 +21,92 @@ interface ICommentProps {
   id: number;
 }
 
-interface ICommentState {
-  commentBody: string;
-  display: CommentDisplayStatus;
-}
 
-class Comment extends React.PureComponent<ICommentProps, ICommentState> {
-  constructor(props: ICommentProps) {
-    super(props);
-    this.state = {
-      commentBody: props.body,
-      display: CommentDisplayStatus.Default
-    };
-  }
+const Comment = React.memo((props: ICommentProps) => {
+  let [commentBody, setCommentBody] = useState(props.body);
+  let [displayStatus, setDisplayStatus] = useState(CommentDisplayStatus.Default);
 
-  componentDidUpdate(prevProps: any) {
-    if (this.props.body !== prevProps.body) {
-      this.setState({ ...this.state, commentBody: this.props.body });
-    }
-  }
+  useEffect( () => {
+    setCommentBody(props.body)
+  }, [props.body]);
 
-  changeDisplay = () => {
-    let status =
-      this.state.display === CommentDisplayStatus.Default
+  const changeDisplay = useCallback(() => {
+    const newStatus = displayStatus === CommentDisplayStatus.Default
         ? CommentDisplayStatus.CommentUpdate
         : CommentDisplayStatus.Default;
-    this.setState({ ...this.state, display: status });
-  };
+    setDisplayStatus(newStatus);
+  }, [displayStatus]);
 
-  handleInput = (e: any) =>
-    this.setState({ ...this.state, [e.target.name]: e.target.value });
+  const handleInput = useCallback((e) => {
+    setCommentBody(e.target.value);
+  }, [])
 
-  submitCommentUpdate = (e: any) => {
+
+  const submitCommentUpdate = useCallback( (e) => {
     e.preventDefault();
-    this.props.updateComment({
-      body: this.state.commentBody,
-      id: this.props.id
+    props.updateComment({
+      body: commentBody,
+      id: props.id
     });
-    this.changeDisplay();
-    this.props.updateArticle();
-  };
+    changeDisplay();
+    props.getArticle(props.article_id);
+  }, [commentBody, props, changeDisplay]);
 
-  render() {
-    return (
-      <>
-        <div className="article_comment_author">
-          <span> {this.props.username} </span>
-          {this.props.isLoggedAdmin ? (
-            <button
-              className="edit_comment_btn"
-              onClick={() => this.changeDisplay()}
-            >
-              Edit
-            </button>
-          ) : null}
+  return (
+    <>
+      <div className="article_comment_author">
+        <span> {props.username} </span>
+        {props.isLoggedAdmin ? (
+          <button
+            className="edit_comment_btn common_button"
+            onClick={changeDisplay}
+          >
+            Edit
+          </button>
+        ) : null}
+      </div>
+      <div className="article_comment_body">
+        <div className="article_comment_body_created_at">
+          <span className="comment_idx">{props.idx}</span>
+          <span className="comment_date">{props.created_at}</span>
         </div>
-        <div className="article_comment_body">
-          <div className="article_comment_body_created_at">
-            <span className="comment_idx">{this.props.idx}</span>
-            <span className="comment_date">{this.props.created_at}</span>
+      { (displayStatus === CommentDisplayStatus.Default) ? (
+          <div className="article_comment_body_message">
+            {props.body}
           </div>
-          {this.state.display === CommentDisplayStatus.Default ? (
-            <div className="article_comment_body_message">
-              {this.props.body}
-            </div>
-          ) : (
-            <form
-              className="update_article_form"
-              onSubmit={this.submitCommentUpdate}
-            >
-              <div className="update_article_form_body">
-                <textarea
-                  rows={5}
-                  cols={80}
-                  name="commentBody"
-                  value={this.state.commentBody}
-                  onChange={this.handleInput}
-                />
-              </div>
-              <input
-                className="update_article_form_submit_btn"
-                type="submit"
-                value="Update comment"
+        ) : (
+          <form
+            className="update_article_form"
+            onSubmit={submitCommentUpdate}
+          >
+            <div className="update_article_form_body">
+            <textarea
+                rows={5}
+                cols={80}
+                name="commentBody"
+                value={commentBody}
+                onChange={handleInput}
               />
-            </form>
-          )}
-        </div>
-      </>
-    );
-  }
-}
+            </div>
+          <input
+              className="update_article_form_submit_btn common_button"
+              type="submit"
+              value="Update comment"
+           />
+          </form>
+        )}
+      </div>
+    </>
+  );
+})
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateComment: (params: { id: number; body: string }) =>
+    updateComment: (params: { id: number; body: string }) => {
       dispatch(api.comments.update(params))
+    },
+    getArticle: (article_id: number) =>
+      dispatch(api.articles.getOne(article_id))
   };
 };
 

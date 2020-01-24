@@ -1,7 +1,7 @@
-#html, #body {
+html, body {
   padding: 0;
   border-width: 0;
-  margin: 0;
+  margin: 0!important; 
   font-family: Open-Sans;
   font-size: 16px;
   line-height: 20px;
@@ -14,4 +14,8 @@
   #body, button {
     font-size: 12px!important;
   }
+}
+
+*:focus {
+  outline: 0;
 }

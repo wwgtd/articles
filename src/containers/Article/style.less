@@ -1,0 +1,102 @@
+@import (reference) '../../sharedCss/style.less';
+
+.article {
+    width: 94%;
+    margin: 5% 3% 0 3%;
+    border: 1px solid black;
+
+    .article_header {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        background-color: @color_dark_blue;
+        padding: 10px 5px;
+
+
+        .delete_article_btn {
+            float: right;
+            padding: 3px;
+            border-radius: 5%;
+            background-color: @color_light_blue;
+
+            &:hover {
+                background-color: @color_dark_blue_hovered;
+            }
+        }
+     }
+
+
+     .article_starter_message,
+     .comments_list {
+         display: grid;
+         grid-template-columns: 1fr 3fr;
+         background-color: #c3dafe;
+     }
+
+     .article_starter_message {
+         .article_starter_message_author {
+             padding: 10px 5px;
+
+             .starter_post_btn_edit {
+                 padding: 4px 6px;
+                 float: right;
+
+                 border: 0.5px solid;
+                 border-radius: 10%;
+             }
+         }
+
+
+         .article_starter_message_body {
+             border-left: 1px solid white;
+
+             .article_starter_message_body_created_at {
+                 display: inline-block;
+                 box-sizing: border-box;
+                 padding: 15px;
+                 width: 100%;
+             }
+
+             .article_starter_message_body_message {
+                 padding: 8px;
+                 background-color: #e4ebec;
+                 min-height: 30px;
+             }
+
+             .update_article_form {
+                 .update_article_form_body {
+                     padding: 1%;
+
+                     textarea {
+                       width: 98%;
+                     }
+                 }
+
+                 .update_article_form_submit_btn {
+                     display: block;
+                     margin: 0 auto 0.5% auto;
+                     padding: 4px 6px;
+                 }
+             }
+         }
+     }
+
+     .comments_list {
+         border-top: 1px solid white;
+     }
+}
+
+.article_create_comment_form {
+    margin-top: 5%;
+    width: 100;
+    text-align: center;
+
+
+    .article_create_comment_submit_btn {
+        display: block;
+        margin: 0 auto 1% auto;
+        padding: 4px 6px;
+
+        border: 0.5px solid;
+        border-radius: 5%;
+  }
+}
